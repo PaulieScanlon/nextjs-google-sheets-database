@@ -11,7 +11,7 @@ export default function Page({ searchParams }: { searchParams: { [key: string]: 
 
   const handleClick = (id: string) => {
     submitVote(id);
-    // setIsSubmitting(true);
+    setIsSubmitting(true);
   };
 
   return (

@@ -15,7 +15,6 @@ export default async function submitVote(id: string) {
     rows[0].set(id, Number(rows[0].get(id)) + 1);
     await rows[0].save();
   } catch (error) {
-    console.log(error);
     redirect('/?error=true');
   }
   redirect('/results');

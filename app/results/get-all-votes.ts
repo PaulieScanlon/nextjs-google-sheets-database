@@ -3,34 +3,41 @@ import { doc } from '../../services/google-spreadsheet';
 import config from '../../utils/poll-config';
 
 export default async function getAllVotes() {
-  await doc.loadInfo();
+  try {
+    await doc.loadInfo();
 
-  const sheet = doc.sheetsByIndex[0];
-  const rows = await sheet.getRows();
+    const sheet = doc.sheetsByIndex[0];
+    const rows = await sheet.getRows();
 
-  const allValues = config.map((value) => {
-    const { name, id } = value;
+    const allValues = config.map((value) => {
+      const { name, id } = value;
+      return {
+        name: name,
+        count: Number(rows[0].get(id)),
+      };
+    });
+
+    const total = allValues.reduce((values, value) => values + value.count, 0);
+    const max = Math.max(...allValues.map((item) => item.count));
+
+    const results = allValues.map((result, index) => {
+      const { name, count } = result;
+      return {
+        value: name,
+        count: count,
+        percent: Number((count * 100) / total).toFixed(1),
+        isMax: count >= max,
+      };
+    });
+
     return {
-      name: name,
-      count: Number(rows[0].get(id)),
+      total: total,
+      results: results,
     };
-  });
-
-  const total = allValues.reduce((values, value) => values + value.count, 0);
-  const max = Math.max(...allValues.map((item) => item.count));
-
-  const results = allValues.map((result, index) => {
-    const { name, count } = result;
+  } catch (error) {
     return {
-      value: name,
-      count: count,
-      percent: Number((count * 100) / total).toFixed(1),
-      isMax: count >= max,
+      total: 0,
+      results: [],
     };
-  });
-
-  return {
-    total: total,
-    results: results,
-  };
+  }
 }
