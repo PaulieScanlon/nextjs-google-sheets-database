@@ -1,3 +1,5 @@
+'use client';
+
 import TheNewStackLogo from './the-new-stack-logo';
 
 export default function PollContainer({ children }: { children: React.ReactNode }) {

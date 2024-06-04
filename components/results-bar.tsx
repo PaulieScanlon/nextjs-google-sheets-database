@@ -1,4 +1,5 @@
 'use client';
+
 import { useEffect } from 'react';
 import { animate, stagger } from 'motion';
 
