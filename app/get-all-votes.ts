@@ -1,4 +1,4 @@
-import { doc } from '../../services/google-spreadsheet';
+import { doc } from '../services/google-spreadsheet';
 
 export default async function getAllVotes() {
   await doc.loadInfo();
