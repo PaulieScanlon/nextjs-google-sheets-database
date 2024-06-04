@@ -1,6 +1,6 @@
 {
   "name": "nextjs-google-sheets-database",
-  "version": "1.0.0",
+  "version": "2.0.0",
   "description": "Use Google Sheets as a Database",
   "main": "index.js",
   "scripts": {
@@ -20,17 +20,20 @@
   },
   "homepage": "https://github.com/PaulieScanlon/nextjs-google-sheets-database#readme",
   "dependencies": {
-    "google-spreadsheet": "^3.3.0",
-    "motion": "^10.14.2",
-    "next": "^12.3.1",
-    "react": "^17.0.2",
-    "react-dom": "17.0.2"
+    "google-auth-library": "^9.10.0",
+    "google-spreadsheet": "^4.1.2",
+    "motion": "^10.18.0",
+    "next": "^14.2.3",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1"
   },
   "devDependencies": {
-    "@tailwindcss/typography": "^0.5.7",
-    "autoprefixer": "^10.4.12",
-    "postcss": "^8.4.17",
-    "prop-types": "^15.8.1",
-    "tailwindcss": "^3.1.8"
+    "@tailwindcss/typography": "^0.5.13",
+    "@types/node": "20.14.1",
+    "@types/react": "18.3.3",
+    "autoprefixer": "^10.4.19",
+    "postcss": "^8.4.38",
+    "tailwindcss": "^3.4.3",
+    "typescript": "5.4.5"
   }
 }
