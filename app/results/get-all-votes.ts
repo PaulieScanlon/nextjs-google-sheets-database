@@ -1,25 +1,28 @@
 'use server';
 import { doc } from '../../services/google-spreadsheet';
+import config from '../../utils/poll-config';
 
 export default async function getAllVotes() {
   await doc.loadInfo();
 
   const sheet = doc.sheetsByIndex[0];
   const rows = await sheet.getRows();
-  await sheet.loadCells('A1:D2');
 
-  const {
-    _rawData,
-    _worksheet: { _headerValues },
-  } = rows[0];
-
-  const total = _rawData.reduce((values, value) => Number(values) + Number(value), 0);
-  const max = Math.max(..._rawData.map((item) => item));
-
-  const results = _headerValues.map((result, index) => {
-    const count = _rawData[index];
+  const allValues = config.map((value) => {
+    const { name, id } = value;
     return {
-      value: result,
+      name: name,
+      count: Number(rows[0].get(id)),
+    };
+  });
+
+  const total = allValues.reduce((values, value) => values + value.count, 0);
+  const max = Math.max(...allValues.map((item) => item.count));
+
+  const results = allValues.map((result, index) => {
+    const { name, count } = result;
+    return {
+      value: name,
       count: count,
       percent: Number((count * 100) / total).toFixed(1),
       isMax: count >= max,
