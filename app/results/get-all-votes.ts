@@ -1,3 +1,4 @@
+'use server';
 import { doc } from '../../services/google-spreadsheet';
 
 export default async function getAllVotes() {

@@ -1,8 +1,6 @@
 'use server';
-
-import { doc } from '../services/google-spreadsheet';
-
 import { redirect } from 'next/navigation';
+import { doc } from '../services/google-spreadsheet';
 
 export default async function submitVote(id: string) {
   if (!id) {

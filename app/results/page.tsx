@@ -1,16 +1,14 @@
 import PollContainer from '../../components/poll-container';
 import ResultsBar from '../../components/results-bar';
 import config from '../../utils/poll-config';
-
-// import getAllVotes from './get-all-votes';
+import getAllVotes from './get-all-votes';
 
 export default async function Page() {
-  // const votes = await getAllVotes();
+  const votes = await getAllVotes();
 
   return (
     <PollContainer>
-      <h1>Results</h1>
-      {/* <>
+      <>
         {votes.results.map((result, index) => {
           const { percent, isMax } = result;
           const name = config[index].name;
@@ -28,7 +26,7 @@ export default async function Page() {
           );
         })}
       </>
-      <p className='text-sm text-zinc-400 mt-2 mb-0 sm:mt-4'>{`${votes.total} votes`}</p> */}
+      <p className='text-sm text-zinc-400 mt-2 mb-0 sm:mt-4'>{`${votes.total} votes`}</p>
     </PollContainer>
   );
 }

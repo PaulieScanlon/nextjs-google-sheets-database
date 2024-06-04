@@ -1,7 +1,5 @@
 'use client';
-
 import { useState } from 'react';
-
 import PollContainer from '../components/poll-container';
 import config from '../utils/poll-config';
 
