@@ -35,6 +35,7 @@ export default async function getAllVotes() {
       results: results,
     };
   } catch (error) {
+    console.error(error);
     return {
       total: 0,
       results: [],
