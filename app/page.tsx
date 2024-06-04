@@ -1,9 +1,11 @@
 'use client';
 
 import { useState } from 'react';
-import submitVote from './submit-vote';
+
 import PollContainer from '../components/poll-container';
 import config from '../utils/poll-config';
+
+import submitVote from './submit-vote';
 
 export default function Page({ searchParams }: { searchParams: { [key: string]: string | string[] | undefined } }) {
   const { error } = searchParams;
