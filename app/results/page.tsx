@@ -1,6 +1,6 @@
 import PollContainer from '../../components/poll-container';
 
-import getAllVotes from './get-all-votes';
+import getAllVotes from '../get-all-votes';
 import config from '../../utils/poll-config';
 
 import ResultsBar from '../../components/results-bar';
