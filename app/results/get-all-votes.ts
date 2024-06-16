@@ -26,7 +26,7 @@ export default async function getAllVotes() {
         value: name,
         count: count,
         percent: Number((count * 100) / total).toFixed(1),
-        isMax: count >= max,
+        max: max,
       };
     });
 

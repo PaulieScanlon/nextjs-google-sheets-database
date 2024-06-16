@@ -1,11 +1,10 @@
 'use client';
 import { useState } from 'react';
-import PollContainer from '../components/poll-container';
 import config from '../utils/poll-config';
 
 import submitVote from './submit-vote';
 
-export default function Page({ searchParams }: { searchParams: { [key: string]: string | string[] | undefined } }) {
+export default function Page({ searchParams }) {
   const { error } = searchParams;
   const [isSubmitting, setIsSubmitting] = useState(false);
 
@@ -15,25 +14,23 @@ export default function Page({ searchParams }: { searchParams: { [key: string]: 
   };
 
   return (
-    <PollContainer>
-      <>
+    <>
+      <h1>Vote</h1>
+      <ul>
         {config.map((item, index) => {
           const { name, id } = item;
 
           return (
-            <button
-              key={index}
-              className='flex justify-center text-zinc-200 font-bold border border-zinc-800 text-xs sm:text-sm rounded-full w-full overflow-hidden transition-colors duration-300 hover:bg-primary/10 hover:border-primary/20 disabled:bg-black disabled:cursor-not-allowed disabled:text-zinc-700'
-              onClick={() => handleClick(id)}
-              disabled={isSubmitting}
-            >
-              <span className='p-2 sm:p-3'>{name}</span>
-            </button>
+            <li key={index}>
+              <button onClick={() => handleClick(id)} disabled={isSubmitting}>
+                <span>{name}</span>
+              </button>
+            </li>
           );
         })}
-      </>
 
-      {error ? <p className='text-sm font-bold text-red-500 mt-2 mb-0 sm:mt-4'>Server error</p> : null}
-    </PollContainer>
+        {error ? <p>Server error</p> : null}
+      </ul>
+    </>
   );
 }
